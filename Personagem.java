@@ -1,8 +1,53 @@
 public class Personagem {
   String nome;
-  int energia = 10;
-  int fome = 0;
-  int sono = 0;
+  private int energia = 10;
+  private int fome = 0;
+  private int sono = 0;
+
+
+  //sobrecarga de construtores (overload)
+  //construtor padrão
+
+  Personagem(String nome, int energia, int fome, int sono) {
+    this(energia,fome,sono);
+    this.nome = nome;
+  }
+
+  personagem(String nome) {
+    this();
+    this.nome = nome;
+
+
+
+  }
+
+
+
+
+
+  Personagem () {
+    energia = 10
+    fome= 0;
+    sono = 0;
+  }
+
+  Personagem(int energia, int fome, int sono) {
+    if (energia >=0 && energia <=10) {
+      this.energia = energia;
+
+    }
+    if (fome >=0 && fome <=10) {
+      this.fome = fome;
+
+    }
+    if(!(sono < 0 || sono > 10)) {
+      this.sono = sono; 
+
+    }
+    
+    
+
+  }
 
   
   //metodo de efeito colateral
@@ -17,7 +62,7 @@ public class Personagem {
       System.out.println(nome + " senm energia para caçar...");
 
     }
-    fome = Math.min(fome+1,10);
+    fome = Math.min(fome + 1,10);
     sono = Math.min(sono + 1,10);
     
   }
@@ -41,8 +86,16 @@ public class Personagem {
       if (energia < 10) {
         energia++;
       }
+      else {
+        System.out.print(nome + " sem sono....\n");
+      }
     }
     
+  }
+
+  @Override
+  public String toString() {
+    return String.format("e: %d, f: %d, s: %d",energia,fome,sono);
   }
 
 }
